@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>URL Shortener</h1>
+     <% if (locals.shortid) { %> <%# locals : data from backend%>
+        <p>URL Generated: http://localhost:8001/url/<%= shortid %></p>
+    <% } %>
+    <div>
+    <form method="POST" action="/url"> <%# redirect to this action - path for submitting data %>
+        <label>Enter original link:
+        <input type="text" name="url" placeholder="http://localhost:8001/example.com"/>
+        </label>
+        <button type="submit">Generate</button>
+    </form>
+    </div>
+    <div>
+        <% if (locals.urls){ %> <%# yes urls: allUrls, but does not run when i get only shortid from backend %>
+        <table>
+            <tr>
+                <thead>
+                    <th>SNO</th>
+                    <th>Shortid</th>
+                    <th>RedirectLink</th>
+                    <th>clicks</th>
+                    
+                </thead>
+                <tbody>
+                    <% urls.forEach((url, index) => { %>
+                        <tr>
+                        <td><%= index+1 %></td>
+                        <td><%= url.shortid %></td>
+                        <td><%= url.redirectLink %></td>
+                        <td><%= url.visitHistory.length %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </tr>
+        </table>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+1. schema - 
+    origurl
+    shortid url
+    visitHistory
+    countclicks
+2. post/origurl - create shortid url and return it
+3. get/short - 
+    - find short in db
+    - countclicks++;
+    - redirect to original
+4. get/analytics/shortid - 
+    - find in db
+    - return countclicks
+    0R - return visitHistory.length
