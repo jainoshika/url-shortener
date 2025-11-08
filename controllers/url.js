@@ -10,7 +10,7 @@ async function handleGenerateNewShortUrl(req, res) {
         shortid: shortID,
         redirectLink: redirectLink,
         visitHistory: [],
-        createdBy: req.user._id,
+        createdBy: req.user._id, //payload has mail and _id
     })
     return res.render("home", { shortid: shortID}); //generated short id and render home page and take data shortid
 }
